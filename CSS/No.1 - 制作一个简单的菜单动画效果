@@ -57,43 +57,26 @@
     var flag = true;//flag用来切换样式，按钮点击后会切换到另一种样式而非只能一次性点击
     var academy = document.getElementsByClassName("font-academy")[0];
     var bar = document.getElementsByClassName("Bar")[0];
+    function handler() {
+        if(flag){
+                academy.className = 'font-academy after';
+                bar.className = 'Bar after';
+                flag = false;
+            }else {
+                academy.className = 'font-academy before';
+                bar.className = 'Bar before';
+                flag = true;
+            }
+
+    }
     //绑定事件兼容, 在chrome 62.0, IE11, edge41下经过测试
     if(document.addEventListener){
-        document.getElementsByClassName("toggleBtn")[0].addEventListener('click', function () {
-            if(flag){
-                academy.className = 'font-academy after';
-                bar.className = 'Bar after';
-                flag = false;
-            }else {
-                academy.className = 'font-academy before';
-                bar.className = 'Bar before';
-                flag = true;
-            }
-        });
+        document.getElementsByClassName("toggleBtn")[0].addEventListener('click', handler);
     }else if(document.attachEvent){//IE
-        document.getElementsByClassName("toggleBtn")[0].attachEvent('click', function () {
-            if(flag){
-                academy.className = 'font-academy after';
-                bar.className = 'Bar after';
-                flag = false;
-            }else {
-                academy.className = 'font-academy before';
-                bar.className = 'Bar before';
-                flag = true;
-            }
-        })
+        document.getElementsByClassName("toggleBtn")[0].attachEvent('click', handler)
     }else {//others
-        document.getElementsByClassName("toggleBtn")[0].onclick=function () {
-            if(flag){
-                academy.className = 'font-academy after';
-                bar.className = 'Bar after';
-                flag = false;
-            }else {
-                academy.className = 'font-academy before';
-                bar.className = 'Bar before';
-                flag = true;
-            }
-        }
+        document.getElementsByClassName("toggleBtn")[0].onclick=handler();
+
 
     }
 
