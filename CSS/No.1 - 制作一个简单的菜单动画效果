@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>No.1 - 制作一个简单的菜单动画效果</title>
+</head>
+<style type="text/css">
+    .font-academy{
+        text-align: center;
+        margin-top: 50px;
+        transition: all 2s;
+        -moz-transition: all 2s;/*Fiexfox4*/
+        -webkit-transition: all 2s;/*Safari, Chrome*/
+        -o-transition: all 2s;/*Opera*/
+    }
+    .font-academy.before{
+        color: black;
+    }
+    .font-academy.after{
+        color: blue;
+    }
+    .Bar{
+        background-color: blue;
+        margin: 0 auto;
+        height: 5px;
+        transition: width 1s;
+        -moz-transition: width 1s;/*Fiexfox4*/
+        -webkit-transition: width 1s;/*Safari, Chrome*/
+        -o-transition: width 1s;/*Opera*/
+
+    }
+    .Bar.before{
+        width: 0;
+    }
+    .Bar.after{
+        width: 100px;
+    }
+    .toggleBtn{
+        margin: 0 auto;
+    }
+    .buttonContainer{
+        margin-top: 20px;
+        text-align: center;
+    }
+
+</style>
+<body>
+<h3 class="font-academy before">前端学院</h3>
+<div class="Bar before"></div>
+<div class="buttonContainer">
+    <button class="toggleBtn">切换样式</button>
+</div>
+
+
+</body>
+<script type="text/javascript">
+    var flag = true;//flag用来切换样式，按钮点击后会切换到另一种样式而非只能一次性点击
+    var academy = document.getElementsByClassName("font-academy")[0];
+    var bar = document.getElementsByClassName("Bar")[0];
+    //绑定事件兼容, 在chrome 62.0, IE11, edge41下经过测试
+    if(document.addEventListener){
+        document.getElementsByClassName("toggleBtn")[0].addEventListener('click', function () {
+            if(flag){
+                academy.className = 'font-academy after';
+                bar.className = 'Bar after';
+                flag = false;
+            }else {
+                academy.className = 'font-academy before';
+                bar.className = 'Bar before';
+                flag = true;
+            }
+        });
+    }else if(document.attachEvent){//IE
+        document.getElementsByClassName("toggleBtn")[0].attachEvent('click', function () {
+            if(flag){
+                academy.className = 'font-academy after';
+                bar.className = 'Bar after';
+                flag = false;
+            }else {
+                academy.className = 'font-academy before';
+                bar.className = 'Bar before';
+                flag = true;
+            }
+        })
+    }else {//others
+        document.getElementsByClassName("toggleBtn")[0].onclick=function () {
+            if(flag){
+                academy.className = 'font-academy after';
+                bar.className = 'Bar after';
+                flag = false;
+            }else {
+                academy.className = 'font-academy before';
+                bar.className = 'Bar before';
+                flag = true;
+            }
+        }
+
+    }
+
+
+</script>
+</html>
