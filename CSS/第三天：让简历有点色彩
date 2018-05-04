@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三天：让简历有点色彩</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+
+</head>
+<body>
+<div id="container" style="height:200px"></div>
+</body>
+<script type="text/javascript">
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+
+    $.getJSON("./data.json", function (data) {
+        var _data = data;
+        myChart.setOption({
+            tooltip:{
+                trigger: 'item',
+                triggerOn:'mousemove'
+            },
+            series:[
+                {
+                    type: 'tree',
+                    data:[_data],
+                    top:'1%',
+                    left:'27%',
+                    bottom:'1%',
+                    right:'40%',
+                    symbolSize:9,
+                    label:{
+                        normal:{
+                            position: 'left',
+                            align: 'right',
+                            fontSize: 20
+                        }
+                    },
+                    leaves: {
+                        label: {
+                            normal: {
+                                position: 'right',
+                                verticalAlign: 'middle',
+                                align: 'left'
+                            }
+                        }
+                    }
+
+                }
+            ]
+        })
+    });
+
+</script>
+</html>
