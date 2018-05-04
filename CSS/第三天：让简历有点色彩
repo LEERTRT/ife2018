@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#lately-film{
+  color:aqua
+}
+#lately-film+ul>li{
+  /* #lately-film+ul>li 表示选择idlately-film
+   * 的下一个相邻兄弟元素(即ul)的下一级子元素
+  为*/
+  font-family:"Georgia";
+}
+li[class~="horrible"]{
+  font-style:italic;
+  /*表示选取class包含"horrible"的li*/
+  color:red;
+}
+[class^="H"]{
+  font-weight:100;
+}
+input[id]{
+  font-size:20px;
+  text-indent:47px
+}
+div[title*="最"]{
+/*   text-shadow参数分别表示水平，垂直位移，模糊度，颜色*/
+  text-shadow:20px 20px 1px plum;
+  text-align:center;
+  text-decoration:underline;
+}
+h4{
+  line-height:100%;
+  font-weight:200;
+}
+	</style>
+</head>
+<body>
+<h1 id="lately-film">最近看的电影</h1>
+<ul class = "item-container">
+  <li class="a-quite-place horrible" actress="Emily">寂静之地1</li>
+  <li class = "Pirates-of-the-Caribbean adventure" score="0.4">加勒比海盗5</li>
+  <li class="Haunted-Asylum horrible">昆池岩1</li>
+</ul>
+<input id="inputFilm"  placeholder="你想看什么电影">
+<div title="最喜欢的电影">你猜猜</div>
+<input type="checkbox" filmName = "matrix">黑客帝国
+<input type="checkbox" filmName = "Leon">这个杀手不太冷
+<h4 class="sentense">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aperiam illum molestiae sequi sint beatae at aut voluptate inventore, voluptatibus tenetur atque nam ducimus deleniti officiis, libero soluta odit quia?
+</h4>
+</body>
+</html>
